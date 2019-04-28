@@ -1,0 +1,6 @@
+﻿@model LogDeDados.Models.Usuario
+@{
+    ViewData["Title"] = "Dashboards";
+}
+<h3>Bem-Vindo @Html.DisplayFor(model => model.Nome) <a asp-area="" asp-controller="Home" asp-action="Logout">sair</a></h3>
+<sub>Token : @Html.DisplayFor(model => model.Token) </sub> 

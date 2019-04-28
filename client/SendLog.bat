@@ -1,0 +1,2 @@
+set datahora=%date:~-4%-%date:~3,2%-%date:~0,2%T%time:~0,2%:%time:~3,2%:%time:~6,2%
+curl -H "Authorization:TOKEN" -H "Content-Type:application/json" -X POST https://localhost:44325/api/Logs/ -d "{\"Evento\": \"Teste\", \"Etapa\": \"CMD\", \"Inicio\": \"%datahora%\", \"FIm\": \"%datahora%\"}"

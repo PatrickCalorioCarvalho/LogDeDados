@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<br>
+<center>
+    <div class="row">
+        <div class="col align-self-center">
+            <form asp-action="Logar">
+                <div class="form-group">
+                    <input id="Email" name="Email" placeholder="Email" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input id="Senha" name="Senha" placeholder="Senha" type="password" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Logar" class="btn btn-primary btn-block" />
+                </div>
+            </form>
+            <a asp-area="" asp-controller="Usuarios" asp-action="Create">Novo Usuario?</a>
+        </div>
+    </div>
+</center>
