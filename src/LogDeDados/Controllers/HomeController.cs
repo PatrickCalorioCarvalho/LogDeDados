@@ -30,6 +30,7 @@ namespace LogDeDados.Controllers
             if (HttpContext.Session.Get<Usuario>("UsuarioLogado") == null)
                 return RedirectToAction(nameof(Index));
             var usuario = HttpContext.Session.Get<Usuario>("UsuarioLogado");
+            ViewBag.Logs = _context.Log.Where(l => l.IDUsuario == usuario.IDUsuario);
             return View(usuario);
         }
         public async Task<IActionResult> Logar(string Email,string Senha)

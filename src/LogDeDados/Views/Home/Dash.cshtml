@@ -3,4 +3,39 @@
     ViewData["Title"] = "Dashboards";
 }
 <h3>Bem-Vindo @Html.DisplayFor(model => model.Nome) <a asp-area="" asp-controller="Home" asp-action="Logout">sair</a></h3>
-<sub>Token : @Html.DisplayFor(model => model.Token) </sub> 
+<sub>Token : @Html.DisplayFor(model => model.Token) </sub>
+
+
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+
+<div id="visualization_wrap">
+    <div id="visualization"></div>
+</div>
+
+<script type="text/javascript">
+    window.addEventListener("resize", function () {
+        drawChart()
+    });
+    google.charts.load("current", { packages: ["timeline"] });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var container = document.getElementById('visualization');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
+
+        dataTable.addColumn({ type: 'string', id: 'Term' });
+        dataTable.addColumn({ type: 'string', id: 'Name' });
+        dataTable.addColumn({ type: 'date', id: 'Start' });
+        dataTable.addColumn({ type: 'date', id: 'End' });
+
+        @foreach (var item in ViewBag.Logs)
+        {
+            @:dataTable.addRows([['@item.Evento', '@item.Etapa', new Date("@item.Inicio.ToString("s")"), new Date("@item.FIm.ToString("s")")]]);
+        }
+        var options = {
+            hAxis: { format: 'HH:mm'},
+            timeline: { colorByRowLabel: true }
+        };
+            chart.draw(dataTable, options);
+    }
+</script>

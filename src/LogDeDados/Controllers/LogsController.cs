@@ -37,7 +37,6 @@ namespace LogDeDados.Controllers
             var usuario = UsuarioToken(Request.Headers["Authorization"]);
             if (usuario == null)
                 return CreatedAtAction("Erro", "Token não Cadastrado");
-
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             log.IDUsuario = usuario.IDUsuario;
