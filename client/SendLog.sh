@@ -1,0 +1,2 @@
+NOW=$(date +"%Y-%m-%dT%H:%M:%S")
+curl -H "Authorization:TOKEN" -H "Content-Type:application/json" -X POST https://localhost:44325/api/Logs/ -d "{\"Evento\": \"Teste\", \"Etapa\": \"CMD\", \"Inicio\": \"$NOW\", \"FIm\": \"$NOW\"}"
